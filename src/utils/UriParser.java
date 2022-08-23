@@ -26,6 +26,11 @@ public class UriParser {
 
     private void parse(){
 
+        if(!this.URI.startsWith("/")){
+            this.isValid = false;
+            return;
+        }
+
         String [] uriSplit = this.URI.split("\\?", 2);
 
         if(uriSplit.length == 2){
@@ -39,6 +44,11 @@ public class UriParser {
         }
 
         String[] uriBodysplit = uriSplit[0].split("/");
+
+        if(uriBodysplit.length != 3){
+            this.isValid = false;
+            return;
+        }
 
         this.controllerCode = uriBodysplit[1];
         this.target = uriBodysplit[2];
@@ -58,4 +68,5 @@ public class UriParser {
     public Map<String, Object> getParameter() {
         return parameter;
     }
+
 }

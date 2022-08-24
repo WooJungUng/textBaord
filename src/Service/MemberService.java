@@ -13,6 +13,6 @@ public class MemberService {
 
 
     public int saveMember(String LoginID, String password, String name){
-        return memberRepository.saveMember(loginID, password, name);
+        return memberRepository.saveMember(LoginID, password, name);
     }
 }

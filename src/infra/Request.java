@@ -13,7 +13,7 @@ public class Request {
     }
 
     public boolean isValidRequest(){
-        return false;
+        return uriParser.isValid();
     }
 
     public String getControllerCode(){

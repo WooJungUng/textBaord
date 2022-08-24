@@ -9,7 +9,6 @@ public class UriParser {
     uri규칙
     - /articles/write
     - /articles/delete?id=1
-
      */
 
     private String URI;
@@ -25,33 +24,33 @@ public class UriParser {
     }
 
     private void parse(){
-
+        // /articles/delete ? id=1
         if(!this.URI.startsWith("/")){
             this.isValid = false;
             return;
         }
+        // naver.com/articles/delete ? id=1
 
-        String [] uriSplit = this.URI.split("\\?", 2);
-
+        String[] uriSplit = this.URI.split("\\?", 2);
+        // id = 1
         if(uriSplit.length == 2){
 
             String paramBody = uriSplit[1];
-            String [] splitParam = paramBody.split("=", 2);
+            String[] splitParam = paramBody.split("=", 2);
 
             parameter.put(splitParam[0], splitParam[1]);
 
-
         }
+        // [], articles , delete
+        String[] uriBodySplit = uriSplit[0].split("/");
 
-        String[] uriBodysplit = uriSplit[0].split("/");
-
-        if(uriBodysplit.length != 3){
+        if(uriBodySplit.length != 3){
             this.isValid = false;
             return;
         }
 
-        this.controllerCode = uriBodysplit[1];
-        this.target = uriBodysplit[2];
+        this.controllerCode = uriBodySplit[1];
+        this.target = uriBodySplit[2];
 
         isValid = true;
 
@@ -69,4 +68,7 @@ public class UriParser {
         return parameter;
     }
 
+    public boolean isValid() {
+        return isValid;
+    }
 }

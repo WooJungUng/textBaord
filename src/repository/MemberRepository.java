@@ -20,4 +20,20 @@ public class MemberRepository {
 
     }
 
+    // 중복 확인 -> 아이디
+    public Member getMemberByLoginId(String loginId){
+
+        for(Member member : store){
+            if(member.getLoginId().equals(loginId)){
+                return member;
+
+            }
+        }
+        return null;
+    }
+
+    public boolean isExistByLoginId(String LoginId){
+        return getMemberByLoginId(loginId) != null; // 
+    }
+
 }

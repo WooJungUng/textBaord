@@ -13,7 +13,7 @@ public class Member {
     private LocalDateTime regDate;
     private LocalDateTime updateDate;
 
-    public Member(int id, String loginID, String password, String name){
+    public Member(int id, String loginId, String password, String name){
 
         this.id = id;
         this.loginId = loginId;
@@ -30,7 +30,7 @@ public class Member {
         this.id = id;
     }
 
-    public String getLoginID() {
+    public String getLoginId() {
         return loginId;
     }
 

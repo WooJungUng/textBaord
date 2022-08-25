@@ -8,10 +8,18 @@ public class Application {
 
     private Scanner sc = Container.sc;
     private boolean isActive = true;
+    private String myAppName;
+
+    public Application(String myAppName){
+        this.myAppName = myAppName;
+    }
 
     public void run(){
 
         while(isActive){
+
+            String line = "https://" + myAppName + ".com";
+
             System.out.print("명령어 : ");
             String inputUri = sc.nextLine().trim();
 

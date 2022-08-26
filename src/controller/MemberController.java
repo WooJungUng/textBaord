@@ -51,10 +51,10 @@ public class MemberController implements Controller{
             return;
         }
 
-        System.out.println("비밀번호 : ");
+        System.out.print("비밀번호 : ");
         String password = sc.nextLine().trim();
 
-        System.out.println("이름 : ");
+        System.out.print("이름 : ");
         String name = sc.nextLine().trim();
 
        int memberId = memberService.saveMember(loginId, password, name);

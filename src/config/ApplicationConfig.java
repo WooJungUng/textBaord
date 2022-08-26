@@ -9,7 +9,7 @@ public class ApplicationConfig {
 
     public static String[] hasAuthUriList = {
         "/members/logout"
-    }
+    };
 
     private boolean isAnonymous(String url){
 

@@ -32,7 +32,7 @@ public class MemberRepository {
         return null;
     }
 
-    public boolean isExistByLoginId(String LoginId){
+    public boolean isExistByLoginId(String loginId){
         return getMemberByLoginId(loginId) != null; //
     }
 

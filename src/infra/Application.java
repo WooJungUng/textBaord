@@ -20,7 +20,7 @@ public class Application {
 
             String line = "https://" + myAppName + ".com";
 
-            System.out.print("명령어 : ");
+            System.out.print(line);
             String inputUri = sc.nextLine().trim();
 
             if(inputUri.equals(".exit")){
@@ -51,7 +51,7 @@ public class Application {
                 return Container.systemController;
             case "members":
             case "member":
-
+                return Container.memberController;
             default:
                 return null;
         }

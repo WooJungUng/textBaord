@@ -7,6 +7,7 @@ import infra.Request;
 import utils.Util;
 
 import java.time.LocalDateTime;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class MemberController implements Controller{
@@ -42,6 +43,11 @@ public class MemberController implements Controller{
 
             case "modify":
                 modify(request);
+                break;
+
+
+            case "delete":
+                delete(request);
                 break;
 
             default:
@@ -162,5 +168,40 @@ public class MemberController implements Controller{
 
         System.out.println("비밀번호 변경되었습니다.");
 
+    }
+
+    public void delete(Request request){
+
+        String paramKey = "loginId";
+
+        if(!Util.hasParam(request, paramKey)) {
+            System.out.println(paramKey + "파라미터가 필요합니다.");
+            return;
+        }
+        String logonMemberId = request.getLogonMemberID();
+        String parameterValue = request.getParameterValue(paramKey);
+
+        if(!logonMemberId.equals(parameterValue)) {
+            System.out.println("본인 계정만 탈퇴할 수 있습니다.");
+            return;
+        }
+
+        System.out.println("정말 탈퇴 하시겠습니까? (y/n)");
+        String answer = sc.nextLine().trim().toLowerCase();
+
+        if(answer.equals("n")){
+            System.out.println("탈퇴 절차를 취소합니다.");
+        else if(answer.equals("y")){
+            memberService.delete(logonMemberId);
+            request.logout();
+
+                System.out.println(logonMemberId + "탈퇴가 정상처리 되었습니다.");
+            }else {
+                System.out.println("y 혹은 n 을 정확하게 입력하여 주시기 바랍니다.");
+            }
+
+
+
+        }
     }
 }

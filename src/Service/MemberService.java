@@ -37,4 +37,10 @@ public class MemberService {
     public Member getMemberByLoginId(String loginId) {
         return memberRepository.getMemberByLoginId(loginId);
     }
+
+    public void delete(String loginId) {
+        Member findMember = getMemberByLoginId(loginId);
+        memberRepository.delete(findMember);
+
+    }
 }

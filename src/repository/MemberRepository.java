@@ -36,4 +36,7 @@ public class MemberRepository {
         return getMemberByLoginId(loginId) != null; //
     }
 
+    public void delete(Member member) {
+        store.remove(member);
+    }
 }

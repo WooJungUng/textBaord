@@ -6,6 +6,7 @@ import infra.Container;
 import infra.Request;
 import utils.Util;
 
+import java.time.LocalDateTime;
 import java.util.Scanner;
 
 public class MemberController implements Controller{
@@ -37,6 +38,10 @@ public class MemberController implements Controller{
 
             case "detail":
                 detail(request);
+                break;
+
+            case "modify":
+                modify(request);
                 break;
 
             default:
@@ -124,6 +129,38 @@ public class MemberController implements Controller{
         System.out.println("아이디 : " + loginId);
         System.out.println("이름 : " + findMember.getName());
         System.out.println("가입일 : " + findMember.getRegDate());
+
+    }
+
+    public void modify(Request request){
+
+        String paramKey = "loginId";
+
+        if(Util.hasParam(request, paramKey)){
+            System.out.println((paramKey + " 파라미터가 필요합니다."));
+            return;
+        }
+        String logonMemberId = request.getLogonMemberID();
+        String parameterValue = request.getParameterStrValue(paramKey);
+
+        if(!logonMemberId.equals(parameterValue)){
+            System.out.println("본인 정보만 수정할 수 있습니다.");
+            return;
+        }
+
+        Member findMember = memberService.getMemberByLoginId(parameterValue);
+
+        System.out.println("변경하고자 하는 비밀번호 : ");
+        String newPassword = sc.nextLine().trim();
+        findMember.setPassword(newPassword);
+
+        System.out.print("변경하고자 하는 이름 : ");
+        String newName = sc.nextLine().trim();
+        findMember.setName(newName);
+
+        findMember.setUpdateDate(LocalDateTime.now());
+
+        System.out.println("비밀번호 변경되었습니다.");
 
     }
 }

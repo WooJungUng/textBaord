@@ -218,5 +218,5 @@ public class MemberController implements Controller{
             System.out.println(member.getId() + " | " + member.getLoginId());
         }
     }
- }
+}
 

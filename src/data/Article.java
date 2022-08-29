@@ -19,7 +19,6 @@ public class Article {
         this.title = title;
         this.body = body;
         this.author = author;
-
     }
 
     public int getId() {

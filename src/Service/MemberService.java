@@ -4,6 +4,8 @@ import data.Member;
 import infra.Container;
 import repository.MemberRepository;
 
+import java.util.List;
+
 public class MemberService {
 
     private MemberRepository memberRepository;
@@ -42,5 +44,9 @@ public class MemberService {
         Member findMember = getMemberByLoginId(loginId);
         memberRepository.delete(findMember);
 
+    }
+
+    public List<Member> getMembers() {
+        return memberRepository.getMembers();
     }
 }

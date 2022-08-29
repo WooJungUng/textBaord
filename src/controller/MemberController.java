@@ -7,6 +7,7 @@ import infra.Request;
 import utils.Util;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -48,6 +49,10 @@ public class MemberController implements Controller{
 
             case "delete":
                 delete(request);
+                break;
+
+            case "list":
+                list();
                 break;
 
             default:
@@ -189,8 +194,9 @@ public class MemberController implements Controller{
         System.out.println("정말 탈퇴 하시겠습니까? (y/n)");
         String answer = sc.nextLine().trim().toLowerCase();
 
-        if(answer.equals("n")){
+        if(answer.equals("n")) {
             System.out.println("탈퇴 절차를 취소합니다.");
+        }
         else if(answer.equals("y")){
             memberService.delete(logonMemberId);
             request.logout();
@@ -200,8 +206,17 @@ public class MemberController implements Controller{
                 System.out.println("y 혹은 n 을 정확하게 입력하여 주시기 바랍니다.");
             }
 
+        }
+    public void list(){
+        System.out.println("== 회원 목록 ==");
 
+        List<Member> members =memberService.getMembers();
 
+        System.out.println("회원 번호 | 아이디 ");
+
+        for(Member member : members){
+            System.out.println(member.getId() + " | " + member.getLoginId());
         }
     }
-}
+ }
+

@@ -8,6 +8,7 @@ import infra.Request;
 import utils.Util;
 
 import javax.print.attribute.standard.RequestingUserName;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Scanner;
 
@@ -123,7 +124,7 @@ public class ArticleController implements  Controller{
         System.out.println("성공적으로 삭제되었습니다.");
 
     }
-    private void modify(Request request) {
+    public void modify(Request request) {
         String paramKey = "id";
 
         if(!Util.hasParam(request, paramKey)){
@@ -144,9 +145,19 @@ public class ArticleController implements  Controller{
             return ;
         }
 
-        articleService.modify(findArticle);
+        System.out.println(" == " + articleId + "번 게시글 수정 ==");
+        System.out.println("제목 : ");
+        String newTitle = sc.nextLine();
 
-        System.out.println("성공적으로 수정을 완료했습니다.");
+        System.out.println("내용 : ");
+        String newBody = sc.nextLine();
+
+        findArticle.setTitle(newTitle);
+        findArticle.setBody(newBody);
+        findArticle.setUpdateDate(LocalDateTime.now());
+
+        System.out.println("게시글이 성공적으로 수정되었습니다.");
+
 
 
 

@@ -24,6 +24,4 @@ public class ArticleService {
         articleRepository.delete(article);
     }
 
-    public void modify(Article findArticle) {
-    }
 }

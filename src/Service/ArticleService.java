@@ -19,4 +19,11 @@ public class ArticleService {
     public Article getById(int id) {
         return articleRepository.getById(id);
     }
+
+    public void delete(Article article) {
+        articleRepository.delete(article);
+    }
+
+    public void modify(Article findArticle) {
+    }
 }

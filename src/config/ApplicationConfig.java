@@ -8,7 +8,8 @@ public class ApplicationConfig {
     };
 
     public static String[] hasAuthUriList = {
-        "/members/logout"
+        "/members/logout",
+        "/articles/write"
     };
 
     private boolean isAnonymous(String url){
